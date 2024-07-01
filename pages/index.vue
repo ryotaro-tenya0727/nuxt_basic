@@ -6,20 +6,29 @@
         {{ subTitle }}
       </h2>
       <button @click="getSomething">タスク取得</button>
+
+      <ul v-for="task in tasks" :key="task.id">
+        <li style="text-align: left">{{ task.title }}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
+import { TaskRepository } from '../repositories/task';
+
 export default {
   data() {
     return {
       subTitle: 'Zenn is good service!!',
+      tasks: [],
     };
   },
   methods: {
-    getSomething() {
-      alert('Get Something!!');
+    async getSomething() {
+      const response = await TaskRepository.get();
+      this.tasks = response.data.tasks;
+      console.log(response);
     },
   },
 };
