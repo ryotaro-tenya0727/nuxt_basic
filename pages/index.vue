@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">Zenn-app</h1>
+      <h1 :class="{ isActive: isActive }">Zenn-app</h1>
       <h2 class="subtitle">
         {{ subTitle }}
       </h2>
@@ -13,6 +13,9 @@
     </div>
   </div>
 </template>
+<style lang="scss">
+@use '~/assets/scss/main.scss';
+</style>
 
 <script setup lang="ts">
 import { TaskRepository } from '../repositories/task';
@@ -22,7 +25,7 @@ definePageMeta({
 
 const subTitle = ref('Zenn is good service!!');
 const tasks = ref([]);
-
+const isActive = ref(true);
 const getSomething = async () => {
   try {
     const response = await TaskRepository.get();
