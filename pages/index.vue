@@ -14,25 +14,22 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { TaskRepository } from '../repositories/task';
 definePageMeta({
   title: 'Index Page',
 });
 
-export default {
-  data() {
-    return {
-      subTitle: 'Zenn is good service!!',
-      tasks: [],
-    };
-  },
-  methods: {
-    async getSomething() {
-      const response = await TaskRepository.get();
-      this.tasks = response.data.tasks;
-      console.log(response);
-    },
-  },
+const subTitle = ref('Zenn is good service!!');
+const tasks = ref([]);
+
+const getSomething = async () => {
+  try {
+    const response = await TaskRepository.get();
+    tasks.value = response.data.tasks;
+    console.log(response);
+  } catch (error) {
+    console.error('Error fetching tasks:', error);
+  }
 };
 </script>
