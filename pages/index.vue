@@ -16,6 +16,9 @@
 
 <script>
 import { TaskRepository } from '../repositories/task';
+definePageMeta({
+  title: 'Index Page',
+});
 
 export default {
   data() {
