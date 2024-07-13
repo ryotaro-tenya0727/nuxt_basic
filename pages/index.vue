@@ -7,6 +7,8 @@
       </h2>
       <NuxtLink to="/about"> About page </NuxtLink>
       <br />
+      <NuxtLink to="/login"> Login page </NuxtLink>
+      <br />
       <button @click="getSomething">タスク取得</button>
       <br />
       <button @click="handleError">Raise errors</button>
