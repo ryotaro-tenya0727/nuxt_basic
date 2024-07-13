@@ -26,7 +26,10 @@ import { TaskRepository } from '../repositories/task';
 definePageMeta({
   title: 'Index Page',
 });
-const handleError = () => console.log(a);
+const handleError = () => {
+  console.log('handleError');
+  // throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });
+};
 
 type Task = {
   id: number;
