@@ -37,7 +37,9 @@
         >
           Log In
         </button>
-
+        <br />
+        <br />
+        <br />
         <button
           class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg"
           @click="handleLogout"
@@ -56,21 +58,18 @@ const email = ref<string>('');
 const password = ref<string>('');
 
 const handleLogin = async () => {
-  try {
-    await UserRepository.login(email.value, password.value)
-      .then((res) => {
-        if (res?.status === 200) {
-          console.log(res);
-        } else {
-          alert('メールアドレスかパスワードが間違っています。');
-        }
-      })
-      .catch(() => {
-        alert('ログインに失敗しました。');
-      });
-  } catch (error) {
-    console.error('Error fetching tasks:', error);
-  }
+  await UserRepository.login(email.value, password.value)
+    .then((res) => {
+      if (res?.status === 200) {
+        console.log(res);
+      } else {
+        alert('メールアドレスかパスワードが間違っています。');
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      alert('ログインに失敗しました。');
+    });
 };
 
 const handleLogout = async () => {

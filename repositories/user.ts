@@ -19,7 +19,7 @@ type AuthHeaders = {
   'Content-Type': string;
 };
 
-const getAuthDataFromStorage = (): AuthHeaders => {
+export const getAuthDataFromStorage = (): AuthHeaders => {
   return {
     'access-token': localStorage.getItem('access-token'),
     client: localStorage.getItem('client'),
@@ -66,6 +66,7 @@ export const UserRepository = {
         return res;
       })
       .catch((err: AxiosError) => {
+        console.log(err);
         return err.response;
       });
   },
