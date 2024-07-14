@@ -19,9 +19,7 @@
     </div>
   </div>
 </template>
-<style lang="scss">
-@use '~/assets/scss/main.scss';
-</style>
+<style lang="scss"></style>
 
 <script setup lang="ts">
 import { TaskRepository } from '../repositories/task';
