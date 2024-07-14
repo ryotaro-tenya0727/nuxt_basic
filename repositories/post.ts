@@ -12,8 +12,18 @@ export type Post = {
 export type PostForRequest = Pick<Post, 'title' | 'body'>;
 
 export const PostRepository = {
+  get: async () => {
+    return await axios
+      .get('/posts')
+      .then((res: AxiosResponse<Post[]>) => {
+        console.log(res);
+        return res.data;
+      })
+      .catch((err) => {
+        return err.response;
+      });
+  },
   create: async (formData: PostForRequest) => {
-    console.log(getAuthDataFromStorage());
     return await axios
       .post('/posts', formData, {
         headers: getAuthDataFromStorage(),
@@ -21,7 +31,7 @@ export const PostRepository = {
       .then((res: AxiosResponse<Post>) => {
         console.log(res);
         alert('投稿しました');
-        return res;
+        return res.data;
       });
   },
 };

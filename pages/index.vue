@@ -9,6 +9,10 @@
       <br />
       <NuxtLink to="/login"> Login page </NuxtLink>
       <br />
+      <NuxtLink to="/newpost">New Post</NuxtLink>
+      <br />
+      <NuxtLink to="/posts">Posts</NuxtLink>
+      <br />
       <button @click="getSomething">タスク取得</button>
       <br />
       <button @click="handleError">Raise errors</button>

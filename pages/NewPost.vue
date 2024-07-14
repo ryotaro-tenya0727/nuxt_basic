@@ -34,6 +34,8 @@
       </button>
     </div>
   </div>
+  <br />
+  <NuxtLink to="/posts">Posts</NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -49,7 +51,7 @@ const postData = reactive<PostData>({
 
 const handleCreatePost = async () => {
   await PostRepository.create(postData).then((res) => {
-    console.log(res.data);
+    console.log(res);
   });
 };
 </script>
