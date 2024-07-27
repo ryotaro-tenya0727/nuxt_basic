@@ -25,6 +25,10 @@
           id="body"
         ></textarea>
       </div>
+      <div>
+        <input type="file" @change="handleFileUpload" />
+      </div>
+      <br />
       <button
         @click="handleCreatePost()"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 uppercase text-lg mx-auto rounded"
@@ -43,15 +47,36 @@ import { PostRepository } from '~/repositories/post';
 type PostData = {
   title: string;
   body: string;
+  image: string | null;
 };
 const postData = reactive<PostData>({
   title: '',
   body: '',
+  image: null,
 });
+
+const handleFileUpload = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const selectedFile: File | null = target.files ? target.files[0] : null;
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    if (typeof reader.result === 'string') {
+      postData.image = reader.result;
+    } else {
+      postData.image = null;
+    }
+  };
+
+  if (selectedFile) {
+    reader.readAsDataURL(selectedFile);
+  }
+};
 
 const handleCreatePost = async () => {
   await PostRepository.create(postData).then((res) => {
-    console.log(res);
+    // console.log(res);
   });
 };
 </script>

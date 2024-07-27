@@ -11,7 +11,7 @@ import AppPost from './../components/AppPost.vue';
 import { PostRepository } from '~/repositories/post';
 import { type Post } from '~/repositories/post';
 const posts = ref<Post[]>([]);
-const onGetPosts = async () => {
+const onGetPosts = async (): Promise<void> => {
   await PostRepository.get()
     .then((res) => {
       posts.value = res;
