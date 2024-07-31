@@ -7,6 +7,7 @@
     <p class="text-grey-darker text-base">
       {{ post.body }}
     </p>
+    <p class="text-grey-darker text-base" v-text="customBody"></p>
     <img :src="post.image" width="50" />
   </div>
 </template>
@@ -16,6 +17,10 @@ import { type Post } from './../repositories/post';
 const props = defineProps<{
   post: Post;
 }>();
+
+const customBody = computed(() => {
+  return `${props.post.body.repeat(5)}`;
+});
 </script>
 
 <style scoped></style>
