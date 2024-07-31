@@ -4,6 +4,10 @@
     <p class="text-grey-darker text-base">
       {{ post.body }}
     </p>
+    <p class="text-grey-darker text-base">
+      {{ post.body }}
+    </p>
+    <img :src="post.image" width="50" />
   </div>
 </template>
 <script setup lang="ts">

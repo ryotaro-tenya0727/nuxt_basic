@@ -5,6 +5,7 @@ import { getAuthDataFromStorage } from './user';
 export type Post = {
   title: string;
   body: string;
+  image: string;
   userName: string;
   createdAt: string;
 };

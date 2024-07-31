@@ -15,6 +15,7 @@ const onGetPosts = async (): Promise<void> => {
   await PostRepository.get()
     .then((res) => {
       posts.value = res;
+      console.log(res);
     })
     .catch((err: Error) => {
       console.error(err.message);
